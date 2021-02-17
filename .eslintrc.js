@@ -1,10 +1,14 @@
+const path = require('path');
+
 module.exports = {
     root: true,
     extends: "airbnb", //npx install-peerdeps --dev eslint-config-airbnb //使用airbnb规则
-    parser: "babel-eslint", // 指定一个paser，将源代码转换为抽象语法树
+    parser: "@typescript-eslint/parser", // 指定一个paser，将源代码转换为抽象语法树
     parserOptions: {
-        sourceType: "module",
-        ecamVersion: 2015
+       project: path.resolve(__dirname, './tsconfig.json'),
+       tsconfigRootDir: __dirname,
+       ecmaVersion: 2019,
+       sourceType: 'module'
     },
     env: {
         browser: true,

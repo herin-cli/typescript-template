@@ -1,5 +1,5 @@
 import path from 'path';
-import { getBabelOutputPlugin } from '@rollup/plugin-babel';
+import babel from '@rollup/plugin-babel';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import { uglify } from 'rollup-plugin-uglify';
 import eslint from '@rollup/plugin-eslint';
@@ -54,9 +54,13 @@ const config = merge(
         extensions,
         modulesOnly: true,
       }),
-      getBabelOutputPlugin({
-        configFile: path.join(__dirname, 'babel.config.js'),
-        allowAllFormats: true
+      // getBabelOutputPlugin({
+      //   configFile: path.join(__dirname, 'babel.config.js'),
+      //   allowAllFormats: true
+      // }),
+      babel({
+        exclude: 'node_modules/**',
+        extensions
       }),
       alias({
           entries: [

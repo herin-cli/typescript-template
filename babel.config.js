@@ -6,6 +6,7 @@ module.exports = {
             targets: ">0.25%"
         }],
         "@babel/preset-react",
+        "@babel/preset-typescript"
     ],
     plugins: [],
 }
