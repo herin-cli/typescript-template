@@ -14,10 +14,19 @@ module.exports = {
         browser: true,
     },
     rules: {
-        "indent": ["warn", 4],
-        "no-console": "off",
-        "no-param-reassign": "off",
-        "no-debugger": "off",
-        "no-undef": "off"
-    }
+        indent: ['warn', 2],
+        'no-console': 'off',
+        'no-unused-vars': 'warn',
+        'no-param-reassign': 'off',
+        'class-methods-use-this': 'off',
+        'no-debugger': 'off',
+        'no-undef': 'off',
+        'no-underscore-dangle': 'off',
+        semi: ['warn', 'never'],
+        'func-names': 'off',
+        'max-classes-per-file': 'off',
+        'no-new-func': 'off',
+        'no-plusplus': 'off',
+        'max-len': ['error', 80],
+      },
 }

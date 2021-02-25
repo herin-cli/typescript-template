@@ -2,11 +2,11 @@ module.exports = {
     presets: [
         ["@babel/preset-env", {
             useBuiltIns: false,
-            corejs: {version: 3},
+            corejs: { version: 3 },
             targets: ">0.25%"
         }],
         "@babel/preset-react",
-        "@babel/preset-typescript"
+        // "@babel/preset-typescript"
     ],
     plugins: [],
 }

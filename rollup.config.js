@@ -1,9 +1,11 @@
 import path from 'path';
+import ts from "rollup-plugin-typescript2"
 import babel from '@rollup/plugin-babel';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import { uglify } from 'rollup-plugin-uglify';
 import eslint from '@rollup/plugin-eslint';
 import alias from '@rollup/plugin-alias';
+import replace from "@rollup/plugin-replace"
 import merge from 'lodash.merge';
 import serve from 'rollup-plugin-serve';
 import pkg from './package.json';
@@ -18,7 +20,7 @@ const resolve = function (...args) {
 const configs = {
   umd: {
     output: {
-      format: 'cjs',
+      format: 'umd',
       file: resolve(pkg.main),
       name: pkg.name,
       sourcemap: true,
@@ -58,10 +60,13 @@ const config = merge(
       //   configFile: path.join(__dirname, 'babel.config.js'),
       //   allowAllFormats: true
       // }),
-      babel({
-        exclude: 'node_modules/**',
-        extensions
+      ts({
+        tsconfig: path.resolve(__dirname, 'tsconfig.json')
       }),
+      // babel({
+      //   exclude: 'node_modules/**',
+      //   extensions
+      // }),
       alias({
           entries: [
               {find: 'src', replacement: path.resolve(__dirname, './src')},
@@ -69,6 +74,10 @@ const config = merge(
               {find: 'lib', replacement: path.resolve(__dirname, './src/lib')}
           ]
       }),
+      replace({
+        'process.env.NODE_ENV': JSON.stringify('development')
+      }),
+      
     ],
   },
   currentConfig,

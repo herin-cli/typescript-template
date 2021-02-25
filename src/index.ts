@@ -1,4 +1,5 @@
-const a = 1;
-console.log(a);
+type messageArray<T> = Array<T>
 
-console.table('running dfefe');
+const hello: messageArray<string> = ['hello', 'world', '\n']
+
+console.log(hello.join(' ').repeat(3))
